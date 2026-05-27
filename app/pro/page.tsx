@@ -1,5 +1,12 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import {
+  SlidersHorizontalIcon,
+  DownloadIcon,
+  MicIcon,
+  ShuffleIcon,
+  LockIcon,
+} from "lucide-react";
 import WaitlistForm from "./WaitlistForm";
 
 export const metadata: Metadata = {
@@ -13,28 +20,28 @@ const CWS_URL =
 
 const PRO_FEATURES = [
   {
-    icon: "🎚️",
+    Icon: SlidersHorizontalIcon,
     name: "5-Band EQ",
     version: "v1.6",
     desc: "Fine-tune every frequency with five parametric bands — Low Shelf, Low-Mid, Mid, High-Mid, and High Shelf. Includes Bass Boost, Vocal Cut, Bright, and Warm presets.",
     detail: ["±12 dB per band", "EQ presets for common use cases", "Real-time preview"],
   },
   {
-    icon: "⏺️",
+    Icon: DownloadIcon,
     name: "Audio Export",
     version: "v1.7",
     desc: "Record the processed audio stream — with all pitch, speed, reverb, and EQ applied — and download it as a file. Your mix, your file.",
     detail: ["All effects baked into the export", "Download as audio file", "For personal use only"],
   },
   {
-    icon: "🎤",
+    Icon: MicIcon,
     name: "Vocal Reducer",
     version: "v1.8",
     desc: "Two modes in one: Karaoke removes lead vocals so you can sing along; A Capella removes the instrumental and isolates the voice. Works best on modern stereo recordings.",
     detail: ["Karaoke mode (remove vocals)", "A Capella mode (remove instruments)", "Mix slider for partial reduction"],
   },
   {
-    icon: "🎛️",
+    Icon: ShuffleIcon,
     name: "Mashup",
     version: "v2.0",
     desc: "Load a second YouTube track alongside the one playing. Auto-detect BPM and key, sync them, and blend with a crossfader. Full DJ console in your browser.",
@@ -129,28 +136,30 @@ export default function ProPage() {
         <section className="max-w-5xl mx-auto px-5 pb-20">
           <h2 className="text-2xl font-extrabold text-[#e8e8ea] mb-8 text-center">What&apos;s included in Pro</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-            {PRO_FEATURES.map((f) => (
+            {PRO_FEATURES.map(({ Icon, name, version, desc, detail }) => (
               <div
-                key={f.name}
+                key={name}
                 className="rounded-xl border border-[#2a2a2e] bg-[#1f1f23] p-6"
               >
                 <div className="flex items-start justify-between mb-3">
                   <div className="flex items-center gap-3">
-                    <span className="text-3xl">{f.icon}</span>
+                    <div className="w-10 h-10 flex items-center justify-center rounded-xl bg-[#2a2a2e] flex-shrink-0">
+                      <Icon size={18} className="text-[#ff7a3d]" strokeWidth={1.75} />
+                    </div>
                     <div>
-                      <div className="font-bold text-base text-[#e8e8ea]">{f.name}</div>
+                      <div className="font-bold text-base text-[#e8e8ea]">{name}</div>
                       <div className="text-[10px] font-semibold text-[#ff7a3d] uppercase tracking-wide mt-0.5">
-                        Ships in {f.version}
+                        Ships in {version}
                       </div>
                     </div>
                   </div>
-                  <div className="text-lg opacity-25 mt-1">🔒</div>
+                  <LockIcon size={14} className="text-[#3a3a40] mt-1 flex-shrink-0" strokeWidth={2} />
                 </div>
-                <p className="text-sm text-[#8a8a8f] leading-relaxed mb-4">{f.desc}</p>
+                <p className="text-sm text-[#8a8a8f] leading-relaxed mb-4">{desc}</p>
                 <ul className="space-y-1">
-                  {f.detail.map((d) => (
+                  {detail.map((d) => (
                     <li key={d} className="flex items-center gap-2 text-xs text-[#6a6a70]">
-                      <span className="text-[#ff7a3d] text-[10px]">◆</span>
+                      <span className="w-1 h-1 rounded-full bg-[#ff7a3d] flex-shrink-0" />
                       {d}
                     </li>
                   ))}
