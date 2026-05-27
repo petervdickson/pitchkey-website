@@ -1,0 +1,197 @@
+import type { Metadata } from "next";
+import Link from "next/link";
+import WaitlistForm from "./WaitlistForm";
+
+export const metadata: Metadata = {
+  title: "PitchKey Pro — Coming Soon",
+  description:
+    "Join the waitlist for PitchKey Pro: 5-Band EQ, Audio Export, Vocal Reducer, and Mashup. One-time upgrade.",
+};
+
+const CWS_URL =
+  "https://chromewebstore.google.com/detail/pitchkey/YOUR_EXTENSION_ID";
+
+const PRO_FEATURES = [
+  {
+    icon: "🎚️",
+    name: "5-Band EQ",
+    version: "v1.6",
+    desc: "Fine-tune every frequency with five parametric bands — Low Shelf, Low-Mid, Mid, High-Mid, and High Shelf. Includes Bass Boost, Vocal Cut, Bright, and Warm presets.",
+    detail: ["±12 dB per band", "EQ presets for common use cases", "Real-time preview"],
+  },
+  {
+    icon: "⏺️",
+    name: "Audio Export",
+    version: "v1.7",
+    desc: "Record the processed audio stream — with all pitch, speed, reverb, and EQ applied — and download it as a file. Your mix, your file.",
+    detail: ["All effects baked into the export", "Download as audio file", "For personal use only"],
+  },
+  {
+    icon: "🎤",
+    name: "Vocal Reducer",
+    version: "v1.8",
+    desc: "Two modes in one: Karaoke removes lead vocals so you can sing along; A Capella removes the instrumental and isolates the voice. Works best on modern stereo recordings.",
+    detail: ["Karaoke mode (remove vocals)", "A Capella mode (remove instruments)", "Mix slider for partial reduction"],
+  },
+  {
+    icon: "🎛️",
+    name: "Mashup",
+    version: "v2.0",
+    desc: "Load a second YouTube track alongside the one playing. Auto-detect BPM and key, sync them, and blend with a crossfader. Full DJ console in your browser.",
+    detail: ["Auto BPM & key detection", "Crossfader between two tracks", "Per-deck vocal reduction"],
+  },
+];
+
+export default function ProPage() {
+  return (
+    <div className="flex flex-col min-h-screen">
+
+      {/* ── NAV ── */}
+      <nav className="sticky top-0 z-50 border-b border-[#2a2a2e] bg-[#1a1a1d]/90 backdrop-blur-md">
+        <div className="max-w-5xl mx-auto px-5 h-14 flex items-center justify-between">
+          <Link href="/" className="font-bold text-base tracking-tight text-[#e8e8ea]">
+            Pitch<span className="text-[#ff7a3d]">Key</span>
+          </Link>
+          <div className="flex items-center gap-4">
+            <Link
+              href="/pro"
+              className="text-sm font-semibold text-[#ff7a3d]"
+            >
+              Pro
+            </Link>
+            <a
+              href={CWS_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-sm font-semibold px-4 py-1.5 rounded-md bg-[#ff7a3d] text-[#1a1a1d] hover:bg-[#ff8e57] transition-colors"
+            >
+              Add to Chrome
+            </a>
+          </div>
+        </div>
+      </nav>
+
+      <main className="flex-1">
+
+        {/* ── HERO ── */}
+        <section className="max-w-3xl mx-auto px-5 pt-20 pb-14 text-center">
+          <div className="inline-block mb-4 px-3 py-1 rounded-full border border-[#4a2e1e] bg-[#2a1810] text-[10px] font-bold tracking-widest uppercase text-[#ff7a3d]">
+            Coming soon
+          </div>
+          <h1 className="text-5xl font-extrabold tracking-tight text-[#e8e8ea] mb-4">
+            PitchKey <span className="text-[#ff7a3d]">Pro</span>
+          </h1>
+          <p className="text-lg text-[#a8a8ad] leading-relaxed max-w-xl mx-auto">
+            Advanced features for producers, vocalists, and power users.
+            One-time upgrade — no subscription, no recurring charges.
+          </p>
+        </section>
+
+        {/* ── PRICING CARD ── */}
+        <section className="max-w-sm mx-auto px-5 mb-16">
+          <div className="rounded-2xl border border-[#ff7a3d]/30 bg-[#1f1f23] p-7 text-center shadow-[0_0_40px_rgba(255,122,61,0.08)]">
+            <div className="text-5xl font-extrabold text-[#e8e8ea] mb-1">
+              $9<span className="text-3xl">.99</span>
+            </div>
+            <div className="text-sm text-[#6a6a70] mb-5">one-time · all future Pro features included</div>
+            <div className="w-full py-3 rounded-lg border border-[#ff7a3d] text-[#ff7a3d] font-bold text-sm cursor-default select-none">
+              Available when Pro launches
+            </div>
+            <p className="text-xs text-[#6a6a70] mt-4 leading-relaxed">
+              Free features (pitch, speed, reverb, loop, Chop&nbsp;&amp;&nbsp;Screw) remain free forever.
+              Pro is a one-time optional upgrade.
+            </p>
+          </div>
+        </section>
+
+        {/* ── PRO FEATURES ── */}
+        <section className="max-w-5xl mx-auto px-5 pb-20">
+          <h2 className="text-2xl font-extrabold text-[#e8e8ea] mb-8 text-center">What&apos;s included in Pro</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+            {PRO_FEATURES.map((f) => (
+              <div
+                key={f.name}
+                className="rounded-xl border border-[#2a2a2e] bg-[#1f1f23] p-6"
+              >
+                <div className="flex items-start justify-between mb-3">
+                  <div className="flex items-center gap-3">
+                    <span className="text-3xl">{f.icon}</span>
+                    <div>
+                      <div className="font-bold text-base text-[#e8e8ea]">{f.name}</div>
+                      <div className="text-[10px] font-semibold text-[#ff7a3d] uppercase tracking-wide mt-0.5">
+                        Ships in {f.version}
+                      </div>
+                    </div>
+                  </div>
+                  <div className="text-lg opacity-25 mt-1">🔒</div>
+                </div>
+                <p className="text-sm text-[#8a8a8f] leading-relaxed mb-4">{f.desc}</p>
+                <ul className="space-y-1">
+                  {f.detail.map((d) => (
+                    <li key={d} className="flex items-center gap-2 text-xs text-[#6a6a70]">
+                      <span className="text-[#ff7a3d] text-[10px]">◆</span>
+                      {d}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* ── WAITLIST ── */}
+        <section className="border-t border-[#2a2a2e] bg-[#1f1f23]">
+          <div className="max-w-xl mx-auto px-5 py-20 text-center">
+            <h2 className="text-2xl font-extrabold text-[#e8e8ea] mb-2">
+              Be first to know when Pro launches
+            </h2>
+            <p className="text-[#a8a8ad] text-sm mb-8 leading-relaxed">
+              Drop your email and we&apos;ll send you one message when Pro is ready — no spam, no drip campaigns.
+            </p>
+            <WaitlistForm />
+          </div>
+        </section>
+
+        {/* ── BACK TO FREE ── */}
+        <section className="max-w-5xl mx-auto px-5 py-12 text-center">
+          <p className="text-sm text-[#6a6a70] mb-4">
+            Not ready to upgrade? The free extension already has a lot to offer.
+          </p>
+          <a
+            href={CWS_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-block px-6 py-2.5 rounded-lg bg-[#ff7a3d] text-[#1a1a1d] font-bold text-sm hover:bg-[#ff8e57] transition-colors"
+          >
+            Add PitchKey to Chrome — Free
+          </a>
+        </section>
+
+      </main>
+
+      {/* ── FOOTER ── */}
+      <footer className="border-t border-[#2a2a2e] py-8">
+        <div className="max-w-5xl mx-auto px-5 flex flex-col sm:flex-row justify-between items-center gap-3 text-xs text-[#6a6a70]">
+          <span>
+            Pitch<span className="text-[#ff7a3d]">Key</span> — built with ♥ for musicians
+          </span>
+          <div className="flex gap-5">
+            <Link href="/" className="hover:text-[#a8a8ad] transition-colors">Home</Link>
+            <a href={CWS_URL} target="_blank" rel="noopener noreferrer" className="hover:text-[#a8a8ad] transition-colors">
+              Chrome Web Store
+            </a>
+            <a
+              href="https://github.com/petervdickson"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-[#a8a8ad] transition-colors"
+            >
+              GitHub
+            </a>
+          </div>
+        </div>
+      </footer>
+
+    </div>
+  );
+}
