@@ -83,25 +83,46 @@ export default function ProPage() {
           </h1>
           <p className="text-lg text-[#a8a8ad] leading-relaxed max-w-xl mx-auto">
             Advanced features for producers, vocalists, and power users.
-            One-time upgrade — no subscription, no recurring charges.
+            Pick the plan that works for you.
           </p>
         </section>
 
-        {/* ── PRICING CARD ── */}
-        <section className="max-w-sm mx-auto px-5 mb-16">
-          <div className="rounded-2xl border border-[#ff7a3d]/30 bg-[#1f1f23] p-7 text-center shadow-[0_0_40px_rgba(255,122,61,0.08)]">
-            <div className="text-5xl font-extrabold text-[#e8e8ea] mb-1">
-              $9<span className="text-3xl">.99</span>
+        {/* ── PRICING CARDS ── */}
+        <section className="max-w-2xl mx-auto px-5 mb-16">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+
+            {/* Monthly */}
+            <div className="rounded-2xl border border-[#2a2a2e] bg-[#1f1f23] p-7 text-center flex flex-col">
+              <div className="text-xs font-bold uppercase tracking-widest text-[#a8a8ad] mb-3">Monthly</div>
+              <div className="text-5xl font-extrabold text-[#e8e8ea] mb-1">
+                $0<span className="text-3xl">.99</span>
+              </div>
+              <div className="text-sm text-[#6a6a70] mb-5">per month · cancel any time</div>
+              <div className="mt-auto w-full py-3 rounded-lg border border-[#ff7a3d] text-[#ff7a3d] font-bold text-sm cursor-default select-none">
+                Available when Pro launches
+              </div>
             </div>
-            <div className="text-sm text-[#6a6a70] mb-5">one-time · all future Pro features included</div>
-            <div className="w-full py-3 rounded-lg border border-[#ff7a3d] text-[#ff7a3d] font-bold text-sm cursor-default select-none">
-              Available when Pro launches
+
+            {/* One-time — highlighted */}
+            <div className="rounded-2xl border border-[#ff7a3d]/40 bg-[#1f1f23] p-7 text-center flex flex-col shadow-[0_0_40px_rgba(255,122,61,0.08)] relative">
+              <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-0.5 rounded-full bg-[#ff7a3d] text-[#1a1a1d] text-[10px] font-extrabold uppercase tracking-wider whitespace-nowrap">
+                Best value
+              </div>
+              <div className="text-xs font-bold uppercase tracking-widest text-[#ff7a3d] mb-3">One-time</div>
+              <div className="text-5xl font-extrabold text-[#e8e8ea] mb-1">
+                $9<span className="text-3xl">.99</span>
+              </div>
+              <div className="text-sm text-[#6a6a70] mb-5">forever · all future Pro features included</div>
+              <div className="mt-auto w-full py-3 rounded-lg border border-[#ff7a3d] text-[#ff7a3d] font-bold text-sm cursor-default select-none">
+                Available when Pro launches
+              </div>
             </div>
-            <p className="text-xs text-[#6a6a70] mt-4 leading-relaxed">
-              Free features (pitch, speed, reverb, loop, Chop&nbsp;&amp;&nbsp;Screw) remain free forever.
-              Pro is a one-time optional upgrade.
-            </p>
+
           </div>
+          <p className="text-xs text-[#6a6a70] mt-5 text-center leading-relaxed">
+            Free features (pitch, speed, reverb, loop, Chop&nbsp;&amp;&nbsp;Screw) remain free forever.
+            Pro is an optional upgrade.
+          </p>
         </section>
 
         {/* ── PRO FEATURES ── */}
