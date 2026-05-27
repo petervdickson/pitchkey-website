@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 };
 
 const CWS_URL =
-  "https://chromewebstore.google.com/detail/pitchkey/YOUR_EXTENSION_ID";
+  "https://chromewebstore.google.com/detail/pitchkey/lklcgdabgngapomnffkdjdgicicijooa";
 
 const PRO_FEATURES = [
   {

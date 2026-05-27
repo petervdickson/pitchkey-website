@@ -1,7 +1,7 @@
 import Link from "next/link";
 
 const CWS_URL =
-  "https://chromewebstore.google.com/detail/pitchkey/YOUR_EXTENSION_ID";
+  "https://chromewebstore.google.com/detail/pitchkey/lklcgdabgngapomnffkdjdgicicijooa";
 
 const FREE_FEATURES = [
   {
