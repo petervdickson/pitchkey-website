@@ -12,6 +12,17 @@
 export default function BackgroundVisuals() {
   return (
     <div aria-hidden className="bg-visuals">
+      {/* Page load wave ripple — bright pulse from center */}
+      <svg className="bg-load-wave" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid slice">
+        <defs>
+          <radialGradient id="wave-grad" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stopColor="#ff7a3d" stopOpacity="0.6" />
+            <stop offset="100%" stopColor="#ff7a3d" stopOpacity="0" />
+          </radialGradient>
+        </defs>
+        <circle cx="50" cy="50" r="20" fill="url(#wave-grad)" />
+      </svg>
+
       {/* Soft glowing orbs — set the ambient orange wash */}
       <div className="bg-orb bg-orb-1" />
       <div className="bg-orb bg-orb-2" />

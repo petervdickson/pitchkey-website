@@ -50,6 +50,33 @@ html { scroll-behavior: smooth; }
   z-index: 0;
 }
 
+/* Page load wave ripple — bright pulse from center on page load */
+.bg-load-wave {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 400px;
+  height: 400px;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 1;
+  animation: bg-load-wave-pulse 1.2s ease-out 0.3s forwards;
+}
+
+@keyframes bg-load-wave-pulse {
+  0% {
+    width: 60px;
+    height: 60px;
+    opacity: 0.8;
+  }
+  100% {
+    width: 600px;
+    height: 600px;
+    opacity: 0;
+  }
+}
+
 /* Soft orange orbs — diffuse, blurred, set the ambient wash */
 .bg-orb {
   position: absolute;
