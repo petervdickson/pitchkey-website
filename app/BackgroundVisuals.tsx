@@ -27,45 +27,31 @@ export default function BackgroundVisuals() {
       <div className="bg-orb bg-orb-1" />
       <div className="bg-orb bg-orb-2" />
 
-      {/* Geometric shapes — outlines only, very low opacity */}
-      <svg
-        className="bg-shape bg-shape-tri"
-        viewBox="0 0 100 100"
-        fill="none"
-        stroke="#ff7a3d"
-        strokeWidth="1"
-      >
-        <polygon points="50,8 92,86 8,86" />
+      {/* Music notes — floating, drifting */}
+      <svg className="bg-shape bg-music-note-1" viewBox="0 0 24 24" fill="#ff7a3d">
+        <path d="M12 3v10m-4-5h8m-3 8c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z" />
       </svg>
 
-      <svg
-        className="bg-shape bg-shape-square"
-        viewBox="0 0 100 100"
-        fill="none"
-        stroke="#ff7a3d"
-        strokeWidth="1"
-      >
-        <rect x="10" y="10" width="80" height="80" />
+      <svg className="bg-shape bg-music-note-2" viewBox="0 0 24 24" fill="#ff7a3d">
+        <path d="M9 3v10m8-5h-8m2 8c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z" />
       </svg>
 
-      <svg
-        className="bg-shape bg-shape-hex"
-        viewBox="0 0 100 100"
-        fill="none"
-        stroke="#ff7a3d"
-        strokeWidth="1"
-      >
-        <polygon points="50,5 90,28 90,72 50,95 10,72 10,28" />
+      {/* Animated pitch slider — dragging left/right */}
+      <svg className="bg-shape bg-slider-pitch" viewBox="0 0 200 40" fill="none">
+        <line x1="20" y1="20" x2="180" y2="20" stroke="#ff7a3d" strokeWidth="2" opacity="0.2" />
+        <circle className="slider-knob" cx="100" cy="20" r="6" fill="#ff7a3d" />
       </svg>
 
-      <svg
-        className="bg-shape bg-shape-circle"
-        viewBox="0 0 100 100"
-        fill="none"
-        stroke="#ff7a3d"
-        strokeWidth="1"
-      >
-        <circle cx="50" cy="50" r="44" />
+      {/* Animated speed slider — dragging left/right */}
+      <svg className="bg-shape bg-slider-speed" viewBox="0 0 200 40" fill="none">
+        <line x1="20" y1="20" x2="180" y2="20" stroke="#ff8e57" strokeWidth="2" opacity="0.2" />
+        <circle className="slider-knob" cx="60" cy="20" r="6" fill="#ff8e57" />
+      </svg>
+
+      {/* Sound wave arcs — expanding and contracting */}
+      <svg className="bg-shape bg-wave-arc" viewBox="0 0 100 100" fill="none">
+        <path d="M50 30 Q60 30 60 50 Q60 70 50 70" stroke="#ff7a3d" strokeWidth="1.5" opacity="0.4" />
+        <path d="M50 20 Q75 20 75 50 Q75 80 50 80" stroke="#ff7a3d" strokeWidth="1" opacity="0.2" />
       </svg>
 
       {/* Audio bars — slow pulse, subtle nod to the product */}

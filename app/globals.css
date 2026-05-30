@@ -103,44 +103,68 @@ html { scroll-behavior: smooth; }
   animation: bg-drift-2 42s ease-in-out infinite alternate;
 }
 
-/* Geometric outline shapes — low opacity, slow rotation + drift */
+/* Music-themed shapes — sliders, notes, waves */
 .bg-shape {
   position: absolute;
   will-change: transform;
   filter: drop-shadow(0 0 12px rgba(255, 122, 61, 0.2));
 }
-.bg-shape-tri {
-  width: 140px;
-  height: 140px;
-  top: 12%;
-  left: 6%;
+
+/* Floating music notes */
+.bg-music-note-1 {
+  width: 32px;
+  height: 32px;
+  top: 15%;
+  left: 8%;
+  opacity: 0.18;
+  animation: bg-note-float-1 6s ease-in-out infinite;
+}
+.bg-music-note-2 {
+  width: 28px;
+  height: 28px;
+  bottom: 20%;
+  right: 12%;
   opacity: 0.16;
-  animation: bg-spin-drift 40s ease-in-out infinite alternate;
+  animation: bg-note-float-2 7s ease-in-out infinite;
 }
-.bg-shape-square {
-  width: 100px;
-  height: 100px;
-  top: 60%;
-  right: 10%;
+
+/* Animated pitch slider — knob dragging left/right */
+.bg-slider-pitch {
+  width: 180px;
+  height: 50px;
+  top: 35%;
+  left: 5%;
+  opacity: 0.15;
+  animation: bg-slider-drift 8s ease-in-out infinite alternate;
+}
+.bg-slider-pitch .slider-knob {
+  animation: bg-knob-drag-pitch 4s ease-in-out infinite;
+}
+
+/* Animated speed slider — knob dragging left/right */
+.bg-slider-speed {
+  width: 180px;
+  height: 50px;
+  bottom: 22%;
+  right: 8%;
   opacity: 0.14;
-  animation: bg-spin-drift-rev 48s ease-in-out infinite alternate;
+  animation: bg-slider-drift 9s ease-in-out infinite alternate;
 }
-.bg-shape-hex {
-  width: 160px;
-  height: 160px;
-  top: 38%;
-  right: 4%;
+.bg-slider-speed .slider-knob {
+  animation: bg-knob-drag-speed 5s ease-in-out infinite;
+}
+
+/* Sound wave arcs — expanding/contracting */
+.bg-wave-arc {
+  width: 120px;
+  height: 120px;
+  top: 58%;
+  left: 42%;
   opacity: 0.12;
-  animation: bg-rotate-slow 56s linear infinite;
+  animation: bg-wave-breathe 6s ease-in-out infinite;
 }
-.bg-shape-circle {
-  width: 220px;
-  height: 220px;
-  bottom: 14%;
-  left: 28%;
-  opacity: 0.11;
-  animation: bg-pulse 26s ease-in-out infinite;
-}
+
+/* Audio bars */
 .bg-shape-bars {
   width: 150px;
   height: auto;
@@ -158,21 +182,42 @@ html { scroll-behavior: smooth; }
   0%   { transform: translate(0, 0) scale(1); }
   100% { transform: translate(140px, -70px) scale(0.92); }
 }
-@keyframes bg-spin-drift {
-  0%   { transform: translate(0, 0) rotate(0deg); }
-  100% { transform: translate(50px, -40px) rotate(180deg); }
+/* Music note floating animations */
+@keyframes bg-note-float-1 {
+  0%   { transform: translateY(0) translateX(0); }
+  50%  { transform: translateY(-20px) translateX(15px); }
+  100% { transform: translateY(0) translateX(0); }
 }
-@keyframes bg-spin-drift-rev {
-  0%   { transform: translate(0, 0) rotate(0deg); }
-  100% { transform: translate(-60px, 30px) rotate(-180deg); }
+@keyframes bg-note-float-2 {
+  0%   { transform: translateY(0) translateX(0); }
+  50%  { transform: translateY(25px) translateX(-12px); }
+  100% { transform: translateY(0) translateX(0); }
 }
-@keyframes bg-rotate-slow {
-  0%   { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+
+/* Slider drift animation */
+@keyframes bg-slider-drift {
+  0%   { transform: translate(0, 0); }
+  100% { transform: translate(30px, -15px); }
 }
-@keyframes bg-pulse {
-  0%, 100% { transform: scale(1);    opacity: 0.05; }
-  50%      { transform: scale(1.18); opacity: 0.09; }
+
+/* Pitch slider knob dragging left/right */
+@keyframes bg-knob-drag-pitch {
+  0%   { cx: 80; }
+  50%  { cx: 140; }
+  100% { cx: 80; }
+}
+
+/* Speed slider knob dragging left/right */
+@keyframes bg-knob-drag-speed {
+  0%   { cx: 50; }
+  50%  { cx: 130; }
+  100% { cx: 50; }
+}
+
+/* Sound wave arcs breathing */
+@keyframes bg-wave-breathe {
+  0%, 100% { transform: scale(1) translateY(0); opacity: 0.12; }
+  50%      { transform: scale(1.25) translateY(5px); opacity: 0.18; }
 }
 @keyframes bg-bars-pulse {
   0%, 100% { transform: scaleY(1)   translateY(0);    opacity: 0.10; }
