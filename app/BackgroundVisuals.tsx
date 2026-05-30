@@ -36,6 +36,29 @@ export default function BackgroundVisuals() {
         <path d="M9 3v10m8-5h-8m2 8c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z" />
       </svg>
 
+      <svg className="bg-shape bg-music-note-3" viewBox="0 0 24 24" fill="#ff8e57">
+        <path d="M15 3v10m-5-5h10m-2 8c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z" />
+      </svg>
+
+      <svg className="bg-shape bg-music-note-4" viewBox="0 0 24 24" fill="#ff7a3d">
+        <path d="M8 3v10m6-5h-6m1 8c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z" />
+      </svg>
+
+      {/* Spinning vinyl records/discs */}
+      <svg className="bg-shape bg-vinyl-1" viewBox="0 0 100 100" fill="none">
+        <circle cx="50" cy="50" r="45" stroke="#ff7a3d" strokeWidth="2" />
+        <circle cx="50" cy="50" r="35" stroke="#ff7a3d" strokeWidth="1" opacity="0.4" />
+        <circle cx="50" cy="50" r="25" stroke="#ff7a3d" strokeWidth="1" opacity="0.4" />
+        <circle cx="50" cy="50" r="12" fill="#ff7a3d" />
+      </svg>
+
+      <svg className="bg-shape bg-vinyl-2" viewBox="0 0 100 100" fill="none">
+        <circle cx="50" cy="50" r="45" stroke="#ff8e57" strokeWidth="2" />
+        <circle cx="50" cy="50" r="35" stroke="#ff8e57" strokeWidth="1" opacity="0.4" />
+        <circle cx="50" cy="50" r="25" stroke="#ff8e57" strokeWidth="1" opacity="0.4" />
+        <circle cx="50" cy="50" r="12" fill="#ff8e57" />
+      </svg>
+
       {/* Animated pitch slider — dragging left/right */}
       <svg className="bg-shape bg-slider-pitch" viewBox="0 0 200 40" fill="none">
         <line x1="20" y1="20" x2="180" y2="20" stroke="#ff7a3d" strokeWidth="2" opacity="0.2" />
