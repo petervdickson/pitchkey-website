@@ -36,3 +36,125 @@ html { scroll-behavior: smooth; }
   outline: 2px solid #ff7a3d;
   outline-offset: 2px;
 }
+
+/* ════════════════════════════════════════════════════════════════════════
+ * Background visuals — ambient drifting shapes behind page content.
+ * Used by <BackgroundVisuals /> in layout.tsx. CSS-only animations.
+ * ════════════════════════════════════════════════════════════════════════ */
+
+.bg-visuals {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Soft orange orbs — diffuse, blurred, set the ambient wash */
+.bg-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(60px);
+  will-change: transform;
+}
+.bg-orb-1 {
+  width: 520px;
+  height: 520px;
+  background: radial-gradient(circle, rgba(255, 122, 61, 0.55) 0%, transparent 70%);
+  top: -140px;
+  right: -160px;
+  opacity: 0.35;
+  animation: bg-drift-1 38s ease-in-out infinite alternate;
+}
+.bg-orb-2 {
+  width: 420px;
+  height: 420px;
+  background: radial-gradient(circle, rgba(255, 142, 87, 0.45) 0%, transparent 70%);
+  bottom: -160px;
+  left: -120px;
+  opacity: 0.3;
+  animation: bg-drift-2 46s ease-in-out infinite alternate;
+}
+
+/* Geometric outline shapes — low opacity, slow rotation + drift */
+.bg-shape {
+  position: absolute;
+  will-change: transform;
+}
+.bg-shape-tri {
+  width: 140px;
+  height: 140px;
+  top: 12%;
+  left: 6%;
+  opacity: 0.09;
+  animation: bg-spin-drift 42s ease-in-out infinite alternate;
+}
+.bg-shape-square {
+  width: 100px;
+  height: 100px;
+  top: 60%;
+  right: 10%;
+  opacity: 0.08;
+  animation: bg-spin-drift-rev 50s ease-in-out infinite alternate;
+}
+.bg-shape-hex {
+  width: 160px;
+  height: 160px;
+  top: 38%;
+  right: 4%;
+  opacity: 0.06;
+  animation: bg-rotate-slow 58s linear infinite;
+}
+.bg-shape-circle {
+  width: 220px;
+  height: 220px;
+  bottom: 14%;
+  left: 28%;
+  opacity: 0.05;
+  animation: bg-pulse 28s ease-in-out infinite;
+}
+.bg-shape-bars {
+  width: 150px;
+  height: auto;
+  bottom: 8%;
+  right: 22%;
+  opacity: 0.10;
+  animation: bg-bars-pulse 22s ease-in-out infinite;
+}
+
+@keyframes bg-drift-1 {
+  0%   { transform: translate(0, 0) scale(1); }
+  100% { transform: translate(-90px, 70px) scale(1.08); }
+}
+@keyframes bg-drift-2 {
+  0%   { transform: translate(0, 0) scale(1); }
+  100% { transform: translate(110px, -50px) scale(0.95); }
+}
+@keyframes bg-spin-drift {
+  0%   { transform: translate(0, 0) rotate(0deg); }
+  100% { transform: translate(50px, -40px) rotate(180deg); }
+}
+@keyframes bg-spin-drift-rev {
+  0%   { transform: translate(0, 0) rotate(0deg); }
+  100% { transform: translate(-60px, 30px) rotate(-180deg); }
+}
+@keyframes bg-rotate-slow {
+  0%   { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+@keyframes bg-pulse {
+  0%, 100% { transform: scale(1);    opacity: 0.05; }
+  50%      { transform: scale(1.18); opacity: 0.09; }
+}
+@keyframes bg-bars-pulse {
+  0%, 100% { transform: scaleY(1)   translateY(0);    opacity: 0.10; }
+  50%      { transform: scaleY(0.6) translateY(-12px); opacity: 0.05; }
+}
+
+/* Respect user motion preference — disable all ambient motion */
+@media (prefers-reduced-motion: reduce) {
+  .bg-orb,
+  .bg-shape {
+    animation: none !important;
+  }
+}
