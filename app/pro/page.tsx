@@ -9,14 +9,21 @@ import {
 } from "lucide-react";
 import WaitlistForm from "./WaitlistForm";
 
+import { CWS_URL } from "../site";
+
 export const metadata: Metadata = {
   title: "PitchKey Pro — Coming Soon",
   description:
     "Join the waitlist for PitchKey Pro: 5-Band EQ, Audio Export, Vocal Reducer, and Mashup. One-time upgrade.",
+  alternates: { canonical: "/pro" },
+  openGraph: {
+    title: "PitchKey Pro — Coming Soon",
+    description:
+      "Join the waitlist for PitchKey Pro: 5-Band EQ, Audio Export, Vocal Reducer, and Mashup. One-time upgrade.",
+    url: "/pro",
+    type: "website",
+  },
 };
-
-const CWS_URL =
-  "https://chromewebstore.google.com/detail/pitchkey/lklcgdabgngapomnffkdjdgicicijooa";
 
 const PRO_FEATURES = [
   {

@@ -11,10 +11,13 @@ import {
   MicIcon,
   ShuffleIcon,
   LockIcon,
+  PuzzleIcon,
+  ZapIcon,
+  ShieldCheckIcon,
 } from "lucide-react";
-
-const CWS_URL =
-  "https://chromewebstore.google.com/detail/pitchkey/lklcgdabgngapomnffkdjdgicicijooa";
+import Reveal from "./Reveal";
+import HeroDemo from "./HeroDemo";
+import { CWS_URL } from "./site";
 
 const FREE_FEATURES = [
   {
@@ -50,10 +53,50 @@ const FREE_FEATURES = [
 ];
 
 const PRO_FEATURES = [
-  { Icon: SlidersHorizontalIcon, name: "5-Band EQ",      desc: "Boost bass, cut mids, brighten highs." },
-  { Icon: DownloadIcon,          name: "Audio Export",   desc: "Download your processed audio." },
-  { Icon: MicIcon,               name: "Vocal Reducer",  desc: "Karaoke mode + A Capella mode." },
-  { Icon: ShuffleIcon,           name: "Mashup",         desc: "Auto BPM sync + crossfader for two tracks." },
+  { Icon: SlidersHorizontalIcon, name: "5-Band EQ",     desc: "Boost bass, cut mids, brighten highs." },
+  { Icon: DownloadIcon,          name: "Audio Export",  desc: "Download your processed audio." },
+  { Icon: MicIcon,               name: "Vocal Reducer", desc: "Karaoke mode + A Capella mode." },
+  { Icon: ShuffleIcon,           name: "Mashup",        desc: "Auto BPM sync + crossfader for two tracks." },
+];
+
+const STATS = [
+  { value: "6", label: "free tools" },
+  { value: "±12", label: "semitones" },
+  { value: "0.25–4×", label: "speed range" },
+  { value: "$0", label: "forever" },
+];
+
+const STEPS = [
+  {
+    n: "01",
+    title: "Add to Chrome",
+    desc: "One click from the Web Store. No account, no sign-up, no card.",
+  },
+  {
+    n: "02",
+    title: "Open any YouTube video",
+    desc: "PitchKey attaches to the player instantly — the studio panel is one click away.",
+  },
+  {
+    n: "03",
+    title: "Shape the sound",
+    desc: "Pitch, speed, reverb, loops, Chop & Screw — applied live as the video plays.",
+  },
+];
+
+const MARQUEE_TAGS = [
+  "Pitch Shift",
+  "Speed Control",
+  "Reverb",
+  "A↔B Loop",
+  "Chop & Screw",
+  "Multitrack DAW",
+  "AI Mashup",
+  "AI Mastering",
+  "Stem Separation",
+  "Hot Cues",
+  "Clip Editing",
+  "Vocal Remover",
 ];
 
 export default function Home() {
@@ -61,7 +104,7 @@ export default function Home() {
     <div className="flex flex-col min-h-screen">
 
       {/* ── NAV ── */}
-      <nav className="sticky top-0 z-50 border-b border-[#2a2a2e] bg-[#1a1a1d]/90 backdrop-blur-md">
+      <nav className="sticky top-0 z-50 border-b border-[#2a2a2e] bg-[#1a1a1d]/80 backdrop-blur-md">
         <div className="max-w-5xl mx-auto px-5 h-14 flex items-center justify-between">
           <Link href="/" className="font-bold text-base tracking-tight text-[#e8e8ea]">
             Pitch<span className="text-[#ff7a3d]">Key</span>
@@ -74,8 +117,9 @@ export default function Home() {
               href={CWS_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-sm font-semibold px-4 py-1.5 rounded-md bg-[#ff7a3d] text-[#1a1a1d] hover:bg-[#ff8e57] transition-colors"
+              className="text-sm font-semibold px-4 py-1.5 rounded-md bg-[#ff7a3d] text-[#1a1a1d] hover:bg-[#ff8e57] transition-colors inline-flex items-center gap-1.5"
             >
+              <PuzzleIcon size={14} strokeWidth={2.25} />
               Add to Chrome
             </a>
           </div>
@@ -85,159 +129,206 @@ export default function Home() {
       <main className="flex-1">
 
         {/* ── HERO ── */}
-        <section className="max-w-5xl mx-auto px-5 pt-24 pb-16 text-center">
-          <div className="inline-block mb-5 px-3 py-1 rounded-full border border-[#3a3a40] bg-[#1f1f23] text-[10px] font-semibold tracking-widest uppercase text-[#ff7a3d]">
-            Free Chrome Extension
-          </div>
-          <h1 className="text-5xl sm:text-6xl font-extrabold leading-tight tracking-tight text-[#e8e8ea] mb-5">
-            The audio studio<br />
-            <span className="text-[#ff7a3d]">YouTube never gave you.</span>
-          </h1>
-          <p className="text-lg text-[#a8a8ad] max-w-xl mx-auto mb-8 leading-relaxed">
-            Pitch shift, speed control, reverb, A↔B loop, and Chop&nbsp;&amp;&nbsp;Screw —
-            applied live to any YouTube video. No accounts. No ads. Free forever.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-3 justify-center items-center">
-            <a
-              href={CWS_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-7 py-3 rounded-lg bg-[#ff7a3d] text-[#1a1a1d] font-bold text-base hover:bg-[#ff8e57] transition-all hover:-translate-y-0.5 shadow-[0_4px_20px_rgba(255,122,61,0.25)]"
-            >
-              Add to Chrome — it&apos;s free
-            </a>
-            <Link
-              href="/pro"
-              className="px-7 py-3 rounded-lg border border-[#3a3a40] text-[#a8a8ad] font-semibold text-base hover:border-[#ff7a3d] hover:text-[#ff7a3d] transition-colors"
-            >
-              Explore Pro features →
-            </Link>
+        <section className="max-w-6xl mx-auto px-5 pt-20 pb-16 lg:pt-28">
+          <div className="grid lg:grid-cols-[1.05fr_0.95fr] gap-12 lg:gap-8 items-center">
+            {/* Left — copy */}
+            <div className="text-center lg:text-left">
+              <div className="inline-flex items-center gap-2 mb-6 px-3 py-1 rounded-full border border-[#3a3a40] bg-[#1f1f23] text-[10px] font-semibold tracking-widest uppercase text-[#ff7a3d]">
+                <ZapIcon size={11} strokeWidth={2.5} />
+                Free Chrome Extension
+              </div>
+              <h1 className="text-5xl sm:text-6xl font-extrabold leading-[1.05] tracking-tight text-[#e8e8ea] mb-6">
+                The audio studio
+                <br />
+                <span className="text-gradient">YouTube never gave you.</span>
+              </h1>
+              <p className="text-lg text-[#a8a8ad] max-w-xl mx-auto lg:mx-0 mb-8 leading-relaxed">
+                Pitch shift, speed control, reverb, A↔B loop, and Chop&nbsp;&amp;&nbsp;Screw —
+                applied live to any YouTube video. No accounts. No ads. Free forever.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-3 justify-center lg:justify-start items-center">
+                <a
+                  href={CWS_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="pk-cta-glow px-7 py-3 rounded-lg bg-[#ff7a3d] text-[#1a1a1d] font-bold text-base hover:bg-[#ff8e57] transition-all hover:-translate-y-0.5 inline-flex items-center gap-2"
+                >
+                  <PuzzleIcon size={18} strokeWidth={2.25} />
+                  Add to Chrome — it&apos;s free
+                </a>
+                <Link
+                  href="/pro"
+                  className="px-7 py-3 rounded-lg border border-[#3a3a40] text-[#a8a8ad] font-semibold text-base hover:border-[#ff7a3d] hover:text-[#ff7a3d] transition-colors"
+                >
+                  Explore Pro features →
+                </Link>
+              </div>
+              <div className="flex items-center gap-4 justify-center lg:justify-start mt-6 text-xs text-[#6a6a70]">
+                <span className="inline-flex items-center gap-1.5">
+                  <ShieldCheckIcon size={13} className="text-[#ff7a3d]" /> No account
+                </span>
+                <span className="inline-flex items-center gap-1.5">
+                  <ZapIcon size={13} className="text-[#ff7a3d]" /> Works instantly
+                </span>
+                <span className="inline-flex items-center gap-1.5">
+                  <MusicIcon size={13} className="text-[#ff7a3d]" /> Any video
+                </span>
+              </div>
+            </div>
+
+            {/* Right — interactive demo */}
+            <div className="flex justify-center lg:justify-end">
+              <HeroDemo />
+            </div>
           </div>
         </section>
 
-        {/* ── EXTENSION MOCKUP ── */}
-        <section className="flex justify-center px-5 pb-20">
-          <div className="w-72 rounded-2xl border border-[#2a2a2e] bg-[#1f1f23] p-5 shadow-2xl shadow-black/60">
-            <div className="flex justify-between items-center mb-5">
-              <span className="font-bold text-sm">
-                Pitch<span className="text-[#ff7a3d]">Key</span>
+        {/* ── MARQUEE STRIP ── */}
+        <section className="border-y border-[#2a2a2e] bg-[#1f1f23]/40 py-4 overflow-hidden">
+          <div className="pk-marquee">
+            {[...MARQUEE_TAGS, ...MARQUEE_TAGS].map((tag, i) => (
+              <span
+                key={i}
+                className="mx-4 text-sm font-semibold text-[#6a6a70] whitespace-nowrap flex items-center gap-3"
+              >
+                {tag}
+                <span className="w-1 h-1 rounded-full bg-[#ff7a3d]" />
               </span>
-              <div className="flex items-center gap-2">
-                <span className="text-[10px] text-[#6a6a70]">v1.5</span>
-                <div className="w-9 h-5 rounded-full bg-[#ff7a3d] relative">
-                  <div className="absolute right-1 top-0.5 w-4 h-4 rounded-full bg-white shadow" />
-                </div>
-              </div>
-            </div>
-            {[
-              { label: "Pitch", val: "+3 st", pct: "62%" },
-              { label: "Speed", val: "0.85×", pct: "38%" },
-              { label: "Reverb", val: "40%",  pct: "40%" },
-            ].map((s) => (
-              <div key={s.label} className="mb-4">
-                <div className="flex justify-between mb-1.5">
-                  <span className="text-[10px] uppercase tracking-wider text-[#a8a8ad]">{s.label}</span>
-                  <span className="text-[11px] font-bold text-[#ff7a3d]">{s.val}</span>
-                </div>
-                <div className="relative h-1 rounded-full bg-[#2a2a2e]">
-                  <div className="absolute left-0 top-0 h-full rounded-full bg-[#ff7a3d]" style={{ width: s.pct }} />
-                  <div
-                    className="absolute top-1/2 -translate-y-1/2 w-3 h-3 rounded-full bg-[#ff7a3d] border-2 border-[#1f1f23]"
-                    style={{ left: `calc(${s.pct} - 6px)` }}
-                  />
-                </div>
-              </div>
             ))}
-            <div className="mt-5 pt-4 border-t border-[#2a2a2e]">
-              <div className="flex justify-between items-center mb-2">
-                <span className="text-[10px] uppercase tracking-wider text-[#a8a8ad]">Loop A↔B</span>
-                <div className="w-7 h-4 rounded-full bg-[#3a3a40]">
-                  <div className="w-3 h-3 m-0.5 rounded-full bg-[#a8a8ad]" />
-                </div>
-              </div>
-              <div className="flex gap-2">
-                <div className="flex-1 h-7 rounded-md bg-[#ff7a3d] flex items-center justify-center">
-                  <span className="text-[10px] font-bold text-[#1a1a1d]">Set A</span>
-                </div>
-                <div className="flex-1 h-7 rounded-md bg-[#2a2a2e] flex items-center justify-center">
-                  <span className="text-[10px] text-[#6a6a70]">A — ↔ — B</span>
-                </div>
-                <div className="flex-1 h-7 rounded-md bg-[#ff7a3d] flex items-center justify-center">
-                  <span className="text-[10px] font-bold text-[#1a1a1d]">Set B</span>
-                </div>
-              </div>
-            </div>
-            <div className="mt-3">
-              <div className="w-full h-8 rounded-md bg-[#ff7a3d] flex items-center justify-center">
-                <span className="text-[11px] font-bold text-[#1a1a1d]">Open Studio →</span>
-              </div>
-            </div>
+          </div>
+        </section>
+
+        {/* ── STATS ── */}
+        <section className="max-w-5xl mx-auto px-5 py-16">
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+            {STATS.map((s, i) => (
+              <Reveal
+                key={s.label}
+                delay={i * 80}
+                className="rounded-xl border border-[#2a2a2e] bg-[#1f1f23] p-6 text-center"
+              >
+                <div className="text-4xl font-extrabold text-[#ff7a3d] mb-1 tabular-nums">{s.value}</div>
+                <div className="text-xs uppercase tracking-wider text-[#8a8a8f]">{s.label}</div>
+              </Reveal>
+            ))}
           </div>
         </section>
 
         {/* ── FREE FEATURES ── */}
         <section className="max-w-5xl mx-auto px-5 pb-24">
-          <div className="text-center mb-10">
-            <h2 className="text-3xl font-extrabold text-[#e8e8ea] mb-2">Everything free. Always.</h2>
+          <Reveal className="text-center mb-12">
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-[#e8e8ea] mb-2">
+              Everything free. <span className="text-gradient">Always.</span>
+            </h2>
             <p className="text-[#a8a8ad] text-base">
               Core features ship with the extension at no cost — no trial, no expiry.
             </p>
-          </div>
+          </Reveal>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            {FREE_FEATURES.map(({ Icon, name, desc }) => (
-              <div
+            {FREE_FEATURES.map(({ Icon, name, desc }, i) => (
+              <Reveal
                 key={name}
-                className="rounded-xl border border-[#2a2a2e] bg-[#1f1f23] p-5 hover:border-[#3a3a40] transition-colors"
+                delay={(i % 3) * 90}
+                className="pk-lift rounded-xl border border-[#2a2a2e] bg-[#1f1f23] p-5"
               >
-                <div className="mb-3 w-8 h-8 flex items-center justify-center rounded-lg bg-[#2a2a2e]">
-                  <Icon size={16} className="text-[#ff7a3d]" strokeWidth={1.75} />
+                <div className="mb-3 w-9 h-9 flex items-center justify-center rounded-lg bg-[#2a2a2e]">
+                  <Icon size={17} className="text-[#ff7a3d]" strokeWidth={1.75} />
                 </div>
                 <div className="font-bold text-sm text-[#e8e8ea] mb-1">{name}</div>
                 <div className="text-xs text-[#8a8a8f] leading-relaxed">{desc}</div>
-              </div>
+              </Reveal>
             ))}
           </div>
         </section>
 
-        {/* ── PRO TEASER ── */}
-        <section className="border-t border-[#2a2a2e] bg-[#1f1f23]">
+        {/* ── HOW IT WORKS ── */}
+        <section className="border-t border-[#2a2a2e] bg-[#1f1f23]/40">
           <div className="max-w-5xl mx-auto px-5 py-20">
-            <div className="text-center mb-10">
+            <Reveal className="text-center mb-12">
+              <h2 className="text-3xl sm:text-4xl font-extrabold text-[#e8e8ea] mb-2">
+                Up and running in seconds
+              </h2>
+              <p className="text-[#a8a8ad] text-base">Three steps. Zero friction.</p>
+            </Reveal>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
+              {STEPS.map((step, i) => (
+                <Reveal
+                  key={step.n}
+                  delay={i * 110}
+                  className="relative rounded-xl border border-[#2a2a2e] bg-[#1a1a1d] p-6"
+                >
+                  <div className="text-5xl font-extrabold text-[#2a2a2e] mb-3 select-none">{step.n}</div>
+                  <div className="font-bold text-base text-[#e8e8ea] mb-1.5">{step.title}</div>
+                  <div className="text-sm text-[#8a8a8f] leading-relaxed">{step.desc}</div>
+                </Reveal>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ── PRO TEASER ── */}
+        <section className="border-t border-[#2a2a2e]">
+          <div className="max-w-5xl mx-auto px-5 py-20">
+            <Reveal className="text-center mb-10">
               <div className="inline-block mb-3 px-3 py-1 rounded-full border border-[#4a2e1e] bg-[#2a1810] text-[10px] font-bold tracking-widest uppercase text-[#ff7a3d]">
                 Coming soon
               </div>
-              <h2 className="text-3xl font-extrabold text-[#e8e8ea] mb-2">
-                PitchKey <span className="text-[#ff7a3d]">Pro</span>
+              <h2 className="text-3xl sm:text-4xl font-extrabold text-[#e8e8ea] mb-2">
+                PitchKey <span className="text-gradient">Pro</span>
               </h2>
               <p className="text-[#a8a8ad] text-base max-w-md mx-auto">
                 Advanced features for producers, vocalists, and power users. One-time upgrade — no subscription.
               </p>
-            </div>
+            </Reveal>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-10">
-              {PRO_FEATURES.map(({ Icon, name, desc }) => (
-                <div
+              {PRO_FEATURES.map(({ Icon, name, desc }, i) => (
+                <Reveal
                   key={name}
-                  className="rounded-xl border border-[#3a3a40] bg-[#1a1a1d] p-5 relative"
+                  delay={(i % 4) * 80}
+                  className="pk-lift rounded-xl border border-[#3a3a40] bg-[#1a1a1d] p-5 relative"
                 >
                   <div className="absolute top-3 right-3">
                     <LockIcon size={12} className="text-[#3a3a40]" strokeWidth={2} />
                   </div>
-                  <div className="mb-3 w-8 h-8 flex items-center justify-center rounded-lg bg-[#2a2a2e]">
-                    <Icon size={16} className="text-[#6a6a70]" strokeWidth={1.75} />
+                  <div className="mb-3 w-9 h-9 flex items-center justify-center rounded-lg bg-[#2a2a2e]">
+                    <Icon size={17} className="text-[#ff7a3d]" strokeWidth={1.75} />
                   </div>
                   <div className="font-bold text-sm text-[#e8e8ea] mb-1">{name}</div>
-                  <div className="text-xs text-[#6a6a70] leading-relaxed">{desc}</div>
-                </div>
+                  <div className="text-xs text-[#8a8a8f] leading-relaxed">{desc}</div>
+                </Reveal>
               ))}
             </div>
-            <div className="text-center">
+            <Reveal className="text-center">
               <Link
                 href="/pro"
                 className="inline-block px-8 py-3 rounded-lg border border-[#ff7a3d] text-[#ff7a3d] font-bold text-sm hover:bg-[#ff7a3d] hover:text-[#1a1a1d] transition-all"
               >
                 Join the waitlist →
               </Link>
-            </div>
+            </Reveal>
+          </div>
+        </section>
+
+        {/* ── FINAL CTA ── */}
+        <section className="border-t border-[#2a2a2e] bg-[#1f1f23]">
+          <div className="max-w-3xl mx-auto px-5 py-20 text-center">
+            <Reveal>
+              <h2 className="text-3xl sm:text-4xl font-extrabold text-[#e8e8ea] mb-4">
+                Turn YouTube into your studio.
+              </h2>
+              <p className="text-[#a8a8ad] text-base mb-8 max-w-lg mx-auto">
+                Free forever. Installs in one click. Works on every video you already watch.
+              </p>
+              <a
+                href={CWS_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="pk-cta-glow inline-flex items-center gap-2 px-8 py-3.5 rounded-lg bg-[#ff7a3d] text-[#1a1a1d] font-bold text-base hover:bg-[#ff8e57] transition-all hover:-translate-y-0.5"
+              >
+                <PuzzleIcon size={18} strokeWidth={2.25} />
+                Add PitchKey to Chrome
+              </a>
+            </Reveal>
           </div>
         </section>
 

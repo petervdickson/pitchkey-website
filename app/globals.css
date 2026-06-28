@@ -298,3 +298,131 @@ html { scroll-behavior: smooth; }
     animation: none !important;
   }
 }
+
+/* ════════════════════════════════════════════════════════════════════════
+ * Redesign: scroll-reveal, interactive demo slider, marquee, gradient text
+ * ════════════════════════════════════════════════════════════════════════ */
+
+/* Scroll-reveal — used by <Reveal />. Hidden until .reveal-in is added. */
+.reveal {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+}
+.reveal-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}
+
+/* Animated gradient brand text */
+.text-gradient {
+  background: linear-gradient(100deg, #ff7a3d 0%, #ff8e57 40%, #ffb07a 60%, #ff7a3d 100%);
+  background-size: 220% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: pk-gradient-pan 6s linear infinite;
+}
+@keyframes pk-gradient-pan {
+  to { background-position: 220% center; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .text-gradient { animation: none; }
+}
+
+/* Interactive demo range slider (HeroDemo) */
+.pk-range {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 6px;
+  border-radius: 999px;
+  background: linear-gradient(
+    to right,
+    #ff7a3d 0%,
+    #ff7a3d var(--pct, 50%),
+    #2a2a2e var(--pct, 50%),
+    #2a2a2e 100%
+  );
+  outline: none;
+  cursor: pointer;
+}
+.pk-range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #ff7a3d;
+  border: 3px solid #1f1f23;
+  box-shadow: 0 0 0 1px #ff7a3d, 0 0 12px rgba(255, 122, 61, 0.6);
+  transition: transform 0.12s ease;
+}
+.pk-range::-webkit-slider-thumb:hover {
+  transform: scale(1.18);
+}
+.pk-range::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #ff7a3d;
+  border: 3px solid #1f1f23;
+  box-shadow: 0 0 0 1px #ff7a3d, 0 0 12px rgba(255, 122, 61, 0.6);
+}
+
+/* Logo marquee for the social-proof strip */
+.pk-marquee {
+  display: flex;
+  width: max-content;
+  animation: pk-marquee-scroll 26s linear infinite;
+}
+.pk-marquee:hover { animation-play-state: paused; }
+@keyframes pk-marquee-scroll {
+  to { transform: translateX(-50%); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .pk-marquee { animation: none; }
+}
+
+/* Subtle hover lift for cards */
+.pk-lift {
+  transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1),
+              border-color 0.25s ease, box-shadow 0.25s ease;
+}
+.pk-lift:hover {
+  transform: translateY(-4px);
+  border-color: #ff7a3d66;
+  box-shadow: 0 12px 40px -12px rgba(255, 122, 61, 0.25);
+}
+
+/* Pulsing glow ring for primary CTA */
+.pk-cta-glow {
+  position: relative;
+}
+.pk-cta-glow::after {
+  content: "";
+  position: absolute;
+  inset: -3px;
+  border-radius: inherit;
+  background: linear-gradient(120deg, #ff7a3d, #ff8e57);
+  filter: blur(14px);
+  opacity: 0.35;
+  z-index: -1;
+  animation: pk-cta-breathe 3.5s ease-in-out infinite;
+}
+@keyframes pk-cta-breathe {
+  0%, 100% { opacity: 0.25; }
+  50% { opacity: 0.55; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .pk-cta-glow::after { animation: none; }
+}
