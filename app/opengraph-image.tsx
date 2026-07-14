@@ -72,7 +72,7 @@ export default function OpengraphImage() {
             YouTube never gave you.
           </div>
           <div style={{ display: "flex", fontSize: 32, color: "#a8a8ad", marginTop: 10 }}>
-            Pitch · Speed · Reverb · A↔B Loop · Chop &amp; Screw · Mini-DAW
+            Pitch · Speed · Reverb · A↔B Loop · Live on any video
           </div>
         </div>
 

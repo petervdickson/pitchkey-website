@@ -43,7 +43,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: TITLE,
     description:
-      "Free Chrome extension. Pitch shift, speed, reverb, A↔B loop, Chop & Screw, and a multitrack mini-DAW for any YouTube video.",
+      "Free Chrome extension. Pitch shift, speed control, reverb, and an A↔B loop for any YouTube video.",
   },
   robots: {
     index: true,

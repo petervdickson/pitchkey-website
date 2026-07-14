@@ -16,7 +16,7 @@ export const SITE_NAME = "PitchKey";
 export const SITE_TAGLINE = "The audio studio YouTube never gave you";
 
 export const SITE_DESCRIPTION =
-  "PitchKey is a free Chrome extension that turns any YouTube video into an audio studio — pitch shift, speed control, reverb, A↔B loop, Chop & Screw, and a full multitrack mini-DAW with AI Mashup and Mastering.";
+  "PitchKey is a free Chrome extension that turns any YouTube video into an audio studio — pitch shift ±12 semitones, speed control, studio-quality reverb, and a precise A↔B loop, all applied live. No account, no ads.";
 
 /** Chrome Web Store listing for the extension. */
 export const CWS_URL =
@@ -26,15 +26,14 @@ export const CWS_URL =
 export const SITE_KEYWORDS = [
   "PitchKey",
   "PitchKey extension",
+  "PitchKey Chrome extension",
   "YouTube pitch shifter",
   "YouTube speed control",
   "change pitch YouTube",
   "slow down YouTube",
-  "chop and screw",
   "A B loop YouTube",
   "YouTube reverb",
   "YouTube audio studio",
+  "transpose YouTube",
   "Chrome extension music tool",
-  "vocal remover YouTube",
-  "AI mashup",
 ];
