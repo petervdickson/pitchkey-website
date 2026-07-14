@@ -67,6 +67,9 @@ export default function ProPage() {
             Pitch<span className="text-[#ff7a3d]">Key</span>
           </Link>
           <div className="flex items-center gap-4">
+            <Link href="/changelog" className="text-sm text-[#a8a8ad] hover:text-[#e8e8ea] transition-colors">
+              Releases
+            </Link>
             <Link
               href="/pro"
               className="text-sm font-semibold text-[#ff7a3d]"
@@ -214,6 +217,7 @@ export default function ProPage() {
           </span>
           <div className="flex gap-5">
             <Link href="/" className="hover:text-[#a8a8ad] transition-colors">Home</Link>
+            <Link href="/changelog" className="hover:text-[#a8a8ad] transition-colors">Releases</Link>
             <a href={CWS_URL} target="_blank" rel="noopener noreferrer" className="hover:text-[#a8a8ad] transition-colors">
               Chrome Web Store
             </a>

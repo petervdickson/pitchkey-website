@@ -19,6 +19,7 @@ import Reveal from "./Reveal";
 import HeroDemo from "./HeroDemo";
 import { CWS_URL } from "./site";
 
+// Live in v1.1 — what users get the moment they install.
 const FREE_FEATURES = [
   {
     Icon: MusicIcon,
@@ -40,6 +41,10 @@ const FREE_FEATURES = [
     name: "A↔B Loop",
     desc: "Set two points, loop that section indefinitely. Per-frame precision — no stutter.",
   },
+];
+
+// Built and on the way — shown dimmed so we never over-promise.
+const COMING_SOON = [
   {
     Icon: ScissorsIcon,
     name: "Chop & Screw",
@@ -60,7 +65,7 @@ const PRO_FEATURES = [
 ];
 
 const STATS = [
-  { value: "6", label: "free tools" },
+  { value: "4", label: "free tools" },
   { value: "±12", label: "semitones" },
   { value: "0.25–4×", label: "speed range" },
   { value: "$0", label: "forever" },
@@ -84,19 +89,18 @@ const STEPS = [
   },
 ];
 
+// Only accurate, currently-true claims — no unreleased features here.
 const MARQUEE_TAGS = [
   "Pitch Shift",
   "Speed Control",
   "Reverb",
   "A↔B Loop",
-  "Chop & Screw",
-  "Multitrack DAW",
-  "AI Mashup",
-  "AI Mastering",
-  "Stem Separation",
-  "Hot Cues",
-  "Clip Editing",
-  "Vocal Remover",
+  "±12 semitones",
+  "0.25–4× speed",
+  "Per-frame loops",
+  "No account",
+  "No ads",
+  "Free forever",
 ];
 
 export default function Home() {
@@ -110,6 +114,9 @@ export default function Home() {
             Pitch<span className="text-[#ff7a3d]">Key</span>
           </Link>
           <div className="flex items-center gap-4">
+            <Link href="/changelog" className="text-sm text-[#a8a8ad] hover:text-[#e8e8ea] transition-colors">
+              Releases
+            </Link>
             <Link href="/pro" className="text-sm text-[#a8a8ad] hover:text-[#e8e8ea] transition-colors">
               Pro
             </Link>
@@ -143,7 +150,7 @@ export default function Home() {
                 <span className="text-gradient">YouTube never gave you.</span>
               </h1>
               <p className="text-lg text-[#a8a8ad] max-w-xl mx-auto lg:mx-0 mb-8 leading-relaxed">
-                Pitch shift, speed control, reverb, A↔B loop, and Chop&nbsp;&amp;&nbsp;Screw —
+                Pitch shift, speed control, reverb, and an A↔B loop —
                 applied live to any YouTube video. No accounts. No ads. Free forever.
               </p>
               <div className="flex flex-col sm:flex-row gap-3 justify-center lg:justify-start items-center">
@@ -217,18 +224,21 @@ export default function Home() {
         {/* ── FREE FEATURES ── */}
         <section className="max-w-5xl mx-auto px-5 pb-24">
           <Reveal className="text-center mb-12">
+            <div className="inline-block mb-3 px-3 py-1 rounded-full border border-[#3a3a40] bg-[#1f1f23] text-[10px] font-bold tracking-widest uppercase text-[#ff7a3d]">
+              Available now · v1.1
+            </div>
             <h2 className="text-3xl sm:text-4xl font-extrabold text-[#e8e8ea] mb-2">
-              Everything free. <span className="text-gradient">Always.</span>
+              Four tools. <span className="text-gradient">Free.</span>
             </h2>
             <p className="text-[#a8a8ad] text-base">
-              Core features ship with the extension at no cost — no trial, no expiry.
+              Everything below ships in the current version — no trial, no expiry.
             </p>
           </Reveal>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {FREE_FEATURES.map(({ Icon, name, desc }, i) => (
               <Reveal
                 key={name}
-                delay={(i % 3) * 90}
+                delay={(i % 4) * 90}
                 className="pk-lift rounded-xl border border-[#2a2a2e] bg-[#1f1f23] p-5"
               >
                 <div className="mb-3 w-9 h-9 flex items-center justify-center rounded-lg bg-[#2a2a2e]">
@@ -239,6 +249,38 @@ export default function Home() {
               </Reveal>
             ))}
           </div>
+
+          {/* Coming soon — dimmed so we never imply these ship today */}
+          <Reveal className="mt-12">
+            <div className="flex items-center gap-3 mb-4">
+              <span className="text-[10px] font-bold uppercase tracking-widest text-[#6a6a70]">
+                Coming soon
+              </span>
+              <span className="flex-1 h-px bg-[#2a2a2e]" />
+              <Link href="/changelog" className="text-[11px] text-[#8a8a8f] hover:text-[#ff7a3d] transition-colors">
+                See the roadmap →
+              </Link>
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {COMING_SOON.map(({ Icon, name, desc }) => (
+                <div
+                  key={name}
+                  className="rounded-xl border border-dashed border-[#2a2a2e] bg-[#1f1f23]/40 p-5 opacity-70"
+                >
+                  <div className="flex items-center justify-between mb-2">
+                    <div className="w-9 h-9 flex items-center justify-center rounded-lg bg-[#2a2a2e]">
+                      <Icon size={17} className="text-[#8a8a8f]" strokeWidth={1.75} />
+                    </div>
+                    <span className="text-[9px] font-bold uppercase tracking-wider text-[#6a6a70] border border-[#3a3a40] rounded-full px-2 py-0.5">
+                      Soon
+                    </span>
+                  </div>
+                  <div className="font-bold text-sm text-[#c8c8cd] mb-1">{name}</div>
+                  <div className="text-xs text-[#6a6a70] leading-relaxed">{desc}</div>
+                </div>
+              ))}
+            </div>
+          </Reveal>
         </section>
 
         {/* ── HOW IT WORKS ── */}
@@ -339,6 +381,7 @@ export default function Home() {
         <div className="max-w-5xl mx-auto px-5 flex flex-col sm:flex-row justify-between items-center gap-3 text-xs text-[#6a6a70]">
           <span>Pitch<span className="text-[#ff7a3d]">Key</span> — built with ♥ for musicians</span>
           <div className="flex gap-5">
+            <Link href="/changelog" className="hover:text-[#a8a8ad] transition-colors">Releases</Link>
             <Link href="/pro" className="hover:text-[#a8a8ad] transition-colors">Pro</Link>
             <a href={CWS_URL} target="_blank" rel="noopener noreferrer" className="hover:text-[#a8a8ad] transition-colors">
               Chrome Web Store
