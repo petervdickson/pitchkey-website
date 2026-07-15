@@ -6,6 +6,8 @@ import {
   MicIcon,
   ShuffleIcon,
   LockIcon,
+  CloudIcon,
+  Disc3Icon,
 } from "lucide-react";
 import WaitlistForm from "./WaitlistForm";
 
@@ -48,9 +50,23 @@ const PRO_FEATURES = [
     detail: ["Karaoke mode (remove vocals)", "A Capella mode (remove instruments)", "Mix slider for partial reduction"],
   },
   {
+    Icon: CloudIcon,
+    name: "PitchKey on SoundCloud",
+    version: "v1.7",
+    desc: "The full toolkit on soundcloud.com — true independent pitch shifting, speed control, and the A↔B loop, working inside SoundCloud's own player.",
+    detail: ["True pitch shift (tempo unchanged)", "Speed control & A↔B loop", "Works across track skips"],
+  },
+  {
+    Icon: Disc3Icon,
+    name: "PitchKey on Spotify",
+    version: "v1.8",
+    desc: "Pitch, speed, and looping on the Spotify web player. Pitch works turntable-style — pitch and tempo move together, the classic vinyl / nightcore sound.",
+    detail: ["Vinyl-mode pitch (DRM-safe)", "Speed control & A↔B loop", "Works on open.spotify.com"],
+  },
+  {
     Icon: ShuffleIcon,
     name: "Mashup",
-    version: "v2.0",
+    version: "v1.9",
     desc: "Load a second YouTube track alongside the one playing. Auto-detect BPM and key, sync them, and blend with a crossfader. Full DJ console in your browser.",
     detail: ["Auto BPM & key detection", "Crossfader between two tracks", "Per-deck vocal reduction"],
   },

@@ -71,12 +71,14 @@ const RELEASES: {
 ];
 
 const ROADMAP: { Icon: React.ElementType; name: string; when: string; desc: string }[] = [
-  { Icon: ScissorsIcon,          name: "Chop & Screw",   when: "Next free update", desc: "Slowed playback + lowered pitch with Light, Classic, and Heavy presets." },
-  { Icon: LayoutDashboardIcon,   name: "Studio Panel",   when: "Free",             desc: "A full side panel for power users — Chop triggers, Vibe Presets, intensity slider." },
-  { Icon: SlidersHorizontalIcon, name: "5-Band EQ",      when: "Pro · v1.4",       desc: "Five parametric bands with presets for bass boost, vocal cut, bright, and warm." },
-  { Icon: DownloadIcon,          name: "Audio Export",   when: "Pro · v1.5",       desc: "Record the processed stream with all effects baked in and download it." },
-  { Icon: MicIcon,               name: "Vocal Reducer",  when: "Pro · v1.6",       desc: "Karaoke mode removes lead vocals; A Capella mode isolates the voice." },
-  { Icon: ShuffleIcon,           name: "Mashup",         when: "Pro · v2.0",       desc: "Load a second track, auto-sync BPM and key, blend with a crossfader." },
+  { Icon: ScissorsIcon,          name: "Chop & Screw",           when: "Free · v1.2",  desc: "Slowed playback + lowered pitch with Light, Classic, and Heavy presets." },
+  { Icon: LayoutDashboardIcon,   name: "Studio Panel",           when: "Free · v1.3",  desc: "A full side panel for power users — Chop triggers, Vibe Presets, intensity slider." },
+  { Icon: SlidersHorizontalIcon, name: "5-Band EQ",              when: "Pro · v1.4",   desc: "Five parametric bands with presets for bass boost, vocal cut, bright, and warm." },
+  { Icon: DownloadIcon,          name: "Audio Export",           when: "Pro · v1.5",   desc: "Record the processed stream with all effects baked in and download it." },
+  { Icon: MicIcon,               name: "Vocal Reducer",          when: "Pro · v1.6",   desc: "Karaoke mode removes lead vocals; A Capella mode isolates the voice." },
+  { Icon: MusicIcon,             name: "PitchKey on SoundCloud", when: "Pro · v1.7",   desc: "True pitch shift, speed, and A↔B loop inside SoundCloud's own player." },
+  { Icon: GaugeIcon,             name: "PitchKey on Spotify",    when: "Pro · v1.8",   desc: "Vinyl-mode pitch, speed, and looping on the Spotify web player." },
+  { Icon: ShuffleIcon,           name: "Mashup",                 when: "Pro · v1.9",   desc: "Load a second track, auto-sync BPM and key, blend with a crossfader." },
 ];
 
 export default function ChangelogPage() {
