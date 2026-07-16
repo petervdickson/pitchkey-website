@@ -386,9 +386,6 @@ export default function Home() {
             <a href={CWS_URL} target="_blank" rel="noopener noreferrer" className="hover:text-[#a8a8ad] transition-colors">
               Chrome Web Store
             </a>
-            <a href="https://github.com/petervdickson" target="_blank" rel="noopener noreferrer" className="hover:text-[#a8a8ad] transition-colors">
-              GitHub
-            </a>
           </div>
         </div>
       </footer>

@@ -2,11 +2,11 @@
 
 import { useState } from "react";
 
-// Sign up at formspree.io → create a form → replace this with your form ID
-const FORMSPREE_ID = "YOUR_FORMSPREE_FORM_ID";
-
 export default function WaitlistForm() {
   const [email, setEmail] = useState("");
+  // Honeypot: bots fill hidden fields, humans don't. Kept in state so the
+  // value posts to the API, where a non-empty value is silently rejected.
+  const [website, setWebsite] = useState("");
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [errorMsg, setErrorMsg] = useState("");
 
@@ -18,18 +18,22 @@ export default function WaitlistForm() {
     setErrorMsg("");
 
     try {
-      const res = await fetch(`https://formspree.io/f/${FORMSPREE_ID}`, {
+      const res = await fetch("/api/waitlist", {
         method: "POST",
         headers: { "Content-Type": "application/json", Accept: "application/json" },
-        body: JSON.stringify({ email }),
+        body: JSON.stringify({ email, website }),
       });
 
       if (res.ok) {
         setStatus("success");
         setEmail("");
       } else {
-        const data = await res.json();
-        setErrorMsg(data?.errors?.[0]?.message ?? "Something went wrong. Try again.");
+        const data = await res.json().catch(() => null);
+        const fallback =
+          res.status === 429
+            ? "Too many attempts. Please try again in a few minutes."
+            : "Something went wrong. Try again.";
+        setErrorMsg(data?.error ?? fallback);
         setStatus("error");
       }
     } catch {
@@ -52,6 +56,18 @@ export default function WaitlistForm() {
 
   return (
     <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
+      {/* Honeypot — visually hidden and off the tab order. Real users never
+          fill it; bots that auto-fill inputs will, and get silently dropped. */}
+      <input
+        type="text"
+        name="website"
+        tabIndex={-1}
+        autoComplete="off"
+        aria-hidden="true"
+        value={website}
+        onChange={(e) => setWebsite(e.target.value)}
+        style={{ position: "absolute", left: "-9999px", width: "1px", height: "1px", opacity: 0 }}
+      />
       <input
         type="email"
         required

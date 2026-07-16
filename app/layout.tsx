@@ -82,7 +82,7 @@ function StructuredData() {
         name: SITE_NAME,
         url: SITE_URL,
         logo: `${SITE_URL}/icon.png`,
-        sameAs: [CWS_URL, "https://github.com/petervdickson"],
+        sameAs: [CWS_URL],
       },
       {
         "@type": "SoftwareApplication",
