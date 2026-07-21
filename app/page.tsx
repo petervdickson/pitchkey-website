@@ -5,7 +5,6 @@ import {
   AudioWaveformIcon,
   RepeatIcon,
   ScissorsIcon,
-  LayoutDashboardIcon,
   SlidersHorizontalIcon,
   DownloadIcon,
   MicIcon,
@@ -19,7 +18,7 @@ import Reveal from "./Reveal";
 import HeroDemo from "./HeroDemo";
 import { CWS_URL } from "./site";
 
-// Live in v1.1 — what users get the moment they install.
+// Live in v1.2 — what users get the moment they install.
 const FREE_FEATURES = [
   {
     Icon: MusicIcon,
@@ -41,19 +40,10 @@ const FREE_FEATURES = [
     name: "A↔B Loop",
     desc: "Set two points, loop that section indefinitely. Per-frame precision — no stutter.",
   },
-];
-
-// Built and on the way — shown dimmed so we never over-promise.
-const COMING_SOON = [
   {
     Icon: ScissorsIcon,
     name: "Chop & Screw",
-    desc: "Classic DJ Screw vibe: slowed playback + lowered pitch. Light, Classic, and Heavy presets.",
-  },
-  {
-    Icon: LayoutDashboardIcon,
-    name: "Studio Panel",
-    desc: "Full side panel for power users — Chop triggers, Vibe Presets, intensity slider.",
+    desc: "Slowed + lowered 'Screw' presets and rhythmic 'Chop' stutters, in a full Studio side panel.",
   },
 ];
 
@@ -65,7 +55,7 @@ const PRO_FEATURES = [
 ];
 
 const STATS = [
-  { value: "4", label: "free tools" },
+  { value: "5", label: "free tools" },
   { value: "±12", label: "semitones" },
   { value: "0.25–4×", label: "speed range" },
   { value: "$0", label: "forever" },
@@ -225,16 +215,16 @@ export default function Home() {
         <section className="max-w-5xl mx-auto px-5 pb-24">
           <Reveal className="text-center mb-12">
             <div className="inline-block mb-3 px-3 py-1 rounded-full border border-[#3a3a40] bg-[#1f1f23] text-[10px] font-bold tracking-widest uppercase text-[#ff7a3d]">
-              Available now · v1.1
+              Available now · v1.2
             </div>
             <h2 className="text-3xl sm:text-4xl font-extrabold text-[#e8e8ea] mb-2">
-              Four tools. <span className="text-gradient">Free.</span>
+              Five tools. <span className="text-gradient">Free.</span>
             </h2>
             <p className="text-[#a8a8ad] text-base">
               Everything below ships in the current version — no trial, no expiry.
             </p>
           </Reveal>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
             {FREE_FEATURES.map(({ Icon, name, desc }, i) => (
               <Reveal
                 key={name}
@@ -250,35 +240,16 @@ export default function Home() {
             ))}
           </div>
 
-          {/* Coming soon — dimmed so we never imply these ship today */}
+          {/* Link to the full roadmap — the next features are Pro (see below). */}
           <Reveal className="mt-12">
-            <div className="flex items-center gap-3 mb-4">
+            <div className="flex items-center gap-3">
               <span className="text-[10px] font-bold uppercase tracking-widest text-[#6a6a70]">
-                Coming soon
+                More on the way
               </span>
               <span className="flex-1 h-px bg-[#2a2a2e]" />
               <Link href="/changelog" className="text-[11px] text-[#8a8a8f] hover:text-[#ff7a3d] transition-colors">
                 See the roadmap →
               </Link>
-            </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              {COMING_SOON.map(({ Icon, name, desc }) => (
-                <div
-                  key={name}
-                  className="rounded-xl border border-dashed border-[#2a2a2e] bg-[#1f1f23]/40 p-5 opacity-70"
-                >
-                  <div className="flex items-center justify-between mb-2">
-                    <div className="w-9 h-9 flex items-center justify-center rounded-lg bg-[#2a2a2e]">
-                      <Icon size={17} className="text-[#8a8a8f]" strokeWidth={1.75} />
-                    </div>
-                    <span className="text-[9px] font-bold uppercase tracking-wider text-[#6a6a70] border border-[#3a3a40] rounded-full px-2 py-0.5">
-                      Soon
-                    </span>
-                  </div>
-                  <div className="font-bold text-sm text-[#c8c8cd] mb-1">{name}</div>
-                  <div className="text-xs text-[#6a6a70] leading-relaxed">{desc}</div>
-                </div>
-              ))}
             </div>
           </Reveal>
         </section>

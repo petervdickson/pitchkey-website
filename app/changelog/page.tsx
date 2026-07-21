@@ -20,7 +20,7 @@ import { CWS_URL } from "../site";
 export const metadata: Metadata = {
   title: "Release Notes & Roadmap",
   description:
-    "Everything new in PitchKey — the free YouTube audio extension. See what shipped in each version (v1.0 → v1.1) and what's coming next.",
+    "Everything new in PitchKey — the free YouTube audio extension. See what shipped in each version (v1.0 → v1.2) and what's coming next.",
   alternates: { canonical: "/changelog" },
   openGraph: {
     title: "PitchKey Release Notes & Roadmap",
@@ -41,9 +41,18 @@ const RELEASES: {
   changes: Change[];
 }[] = [
   {
-    version: "1.1",
+    version: "1.2",
     date: "Latest",
     tag: "Current",
+    summary: "Chop & Screw comes to PitchKey — plus a full Studio side panel.",
+    changes: [
+      { Icon: ScissorsIcon, text: "New Chop & Screw mode: slowed + lowered 'Screw' presets (Light, Classic, Heavy) and rhythmic 'Chop' stutters, with one-tap combo vibes." },
+      { Icon: LayoutDashboardIcon, text: "New Studio side panel — a dedicated home for advanced controls alongside the quick popup." },
+    ],
+  },
+  {
+    version: "1.1",
+    date: "Earlier",
     summary: "A↔B looping joins the toolkit — practice and study any passage on repeat.",
     changes: [
       { Icon: RepeatIcon, text: "New A↔B Loop: set two points and loop that section with per-frame precision." },
@@ -71,14 +80,12 @@ const RELEASES: {
 ];
 
 const ROADMAP: { Icon: React.ElementType; name: string; when: string; desc: string }[] = [
-  { Icon: ScissorsIcon,          name: "Chop & Screw",           when: "Free · v1.2",  desc: "Slowed playback + lowered pitch with Light, Classic, and Heavy presets." },
-  { Icon: LayoutDashboardIcon,   name: "Studio Panel",           when: "Free · v1.3",  desc: "A full side panel for power users — Chop triggers, Vibe Presets, intensity slider." },
-  { Icon: SlidersHorizontalIcon, name: "5-Band EQ",              when: "Pro · v1.4",   desc: "Five parametric bands with presets for bass boost, vocal cut, bright, and warm." },
-  { Icon: DownloadIcon,          name: "Audio Export",           when: "Pro · v1.5",   desc: "Record the processed stream with all effects baked in and download it." },
-  { Icon: MicIcon,               name: "Vocal Reducer",          when: "Pro · v1.6",   desc: "Karaoke mode removes lead vocals; A Capella mode isolates the voice." },
-  { Icon: MusicIcon,             name: "PitchKey on SoundCloud", when: "Pro · v1.7",   desc: "True pitch shift, speed, and A↔B loop inside SoundCloud's own player." },
-  { Icon: GaugeIcon,             name: "PitchKey on Spotify",    when: "Pro · v1.8",   desc: "Vinyl-mode pitch, speed, and looping on the Spotify web player." },
-  { Icon: ShuffleIcon,           name: "Mashup",                 when: "Pro · v1.9",   desc: "Load a second track, auto-sync BPM and key, blend with a crossfader." },
+  { Icon: SlidersHorizontalIcon, name: "5-Band EQ",              when: "Pro · v1.3",   desc: "Five parametric bands with presets for bass boost, vocal cut, bright, and warm." },
+  { Icon: DownloadIcon,          name: "Audio Export",           when: "Pro · v1.4",   desc: "Record the processed stream with all effects baked in and download it." },
+  { Icon: MicIcon,               name: "Vocal Reducer",          when: "Pro · v1.5",   desc: "Karaoke mode removes lead vocals; A Capella mode isolates the voice." },
+  { Icon: MusicIcon,             name: "PitchKey on SoundCloud", when: "Pro · v1.6",   desc: "True pitch shift, speed, and A↔B loop inside SoundCloud's own player." },
+  { Icon: GaugeIcon,             name: "PitchKey on Spotify",    when: "Pro · v1.7",   desc: "Vinyl-mode pitch, speed, and looping on the Spotify web player." },
+  { Icon: ShuffleIcon,           name: "Mashup",                 when: "Pro · v1.8",   desc: "Load a second track, auto-sync BPM and key, blend with a crossfader." },
 ];
 
 export default function ChangelogPage() {
@@ -116,7 +123,7 @@ export default function ChangelogPage() {
         {/* ── HERO ── */}
         <section className="max-w-3xl mx-auto px-5 pt-20 pb-12 text-center">
           <div className="inline-block mb-4 px-3 py-1 rounded-full border border-[#3a3a40] bg-[#1f1f23] text-[10px] font-bold tracking-widest uppercase text-[#ff7a3d]">
-            Currently shipping v1.1
+            Currently shipping v1.2
           </div>
           <h1 className="text-4xl sm:text-5xl font-extrabold tracking-tight text-[#e8e8ea] mb-4">
             Release notes <span className="text-gradient">&amp; roadmap</span>
@@ -210,7 +217,7 @@ export default function ChangelogPage() {
                 Get the current version
               </h2>
               <p className="text-[#a8a8ad] text-sm mb-7">
-                Install v1.1 free and you&apos;ll get every future update automatically.
+                Install v1.2 free and you&apos;ll get every future update automatically.
               </p>
               <a
                 href={CWS_URL}
