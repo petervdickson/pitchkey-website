@@ -22,6 +22,17 @@ export const SITE_DESCRIPTION =
 export const CWS_URL =
   "https://chromewebstore.google.com/detail/pitchkey/lklcgdabgngapomnffkdjdgicicijooa";
 
+/**
+ * The published Chrome extension ID.
+ *
+ * Used to message the installed extension from this site (allowed by the
+ * extension's `externally_connectable` manifest entry). Pro checkout must be
+ * opened BY the extension — ExtPay's /choose-plan returns "404 API key
+ * required" without a per-install api_key that only the extension holds.
+ */
+export const EXTENSION_ID =
+  process.env.NEXT_PUBLIC_EXTENSION_ID || "lklcgdabgngapomnffkdjdgicicijooa";
+
 /** Keywords surfaced in metadata to help discoverability for the brand term. */
 export const SITE_KEYWORDS = [
   "PitchKey",

@@ -10,6 +10,7 @@ import {
   Disc3Icon,
 } from "lucide-react";
 import WaitlistForm from "./WaitlistForm";
+import BuyButton from "./BuyButton";
 
 import { CWS_URL } from "../site";
 
@@ -131,9 +132,7 @@ export default function ProPage() {
                 $0<span className="text-3xl">.99</span>
               </div>
               <div className="text-sm text-[#6a6a70] mb-5">per month · cancel any time</div>
-              <div className="mt-auto w-full py-3 rounded-lg border border-[#ff7a3d] text-[#ff7a3d] font-bold text-sm cursor-default select-none">
-                Available when Pro launches
-              </div>
+              <BuyButton label="Get Pro — Monthly" variant="outline" />
             </div>
 
             {/* One-time — highlighted */}
@@ -146,9 +145,7 @@ export default function ProPage() {
                 $9<span className="text-3xl">.99</span>
               </div>
               <div className="text-sm text-[#6a6a70] mb-5">forever · all future Pro features included</div>
-              <div className="mt-auto w-full py-3 rounded-lg border border-[#ff7a3d] text-[#ff7a3d] font-bold text-sm cursor-default select-none">
-                Available when Pro launches
-              </div>
+              <BuyButton label="Get Pro — One-time" variant="solid" />
             </div>
 
           </div>
